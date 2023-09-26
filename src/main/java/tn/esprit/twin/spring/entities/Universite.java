@@ -12,6 +12,9 @@ public class Universite implements Serializable{
     private String nomUniversite;
     private String addresse;
 
+    @OneToOne
+    Foyer foyer;
+
     public Universite() {
     }
 

@@ -2,10 +2,13 @@ package tn.esprit.twin.spring.entities;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table( name = "Etudiant")
+
 public class Etudiant implements Serializable {
+
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name="idEtudiant")
@@ -16,6 +19,9 @@ public class Etudiant implements Serializable {
     private String ecole;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
+
+    @ManyToMany
+    List<Reservation> Reservations;
 
 
 

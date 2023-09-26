@@ -1,6 +1,7 @@
 package tn.esprit.twin.spring.entities;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table (name = "Foyer")
@@ -13,6 +14,12 @@ public class Foyer implements Serializable {
     private String nomFoyer;
     private long capaciteFoyer;
 
+
+    @OneToMany (mappedBy="foyer")
+    List<Bloc> blocs;
+
+@OneToOne
+Universite universite;
 
     public Foyer() {
     }

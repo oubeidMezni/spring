@@ -2,6 +2,7 @@ package tn.esprit.twin.spring.entities;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Reservation")
@@ -9,18 +10,20 @@ public class Reservation implements Serializable{
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name="idReservation")
-    private String idReservation;
+    private long idReservation;
 
     @Temporal(TemporalType.DATE)
     private Date AnneeUniversitaire;
 
     private boolean isValid;
 
+    @ManyToMany(mappedBy = "Reservations")
+    List<Etudiant> Etudiants;
 
     public Reservation() {
     }
 
-    public Reservation(String idReservation, Date anneeUniversitaire, boolean isValid) {
+    public Reservation(Long idReservation, Date anneeUniversitaire, boolean isValid) {
         this.idReservation = idReservation;
         AnneeUniversitaire = anneeUniversitaire;
         this.isValid = isValid;
@@ -31,11 +34,11 @@ public class Reservation implements Serializable{
         this.isValid = isValid;
     }
 
-    public String getIdReservation() {
+    public Long getIdReservation() {
         return idReservation;
     }
 
-    public void setIdReservation(String idReservation) {
+    public void setIdReservation(long idReservation) {
         this.idReservation = idReservation;
     }
 
