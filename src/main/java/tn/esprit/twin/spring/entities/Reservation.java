@@ -8,9 +8,8 @@ import java.util.List;
 @Table(name = "Reservation")
 public class Reservation implements Serializable{
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name="idReservation")
-    private long idReservation;
+    private String idReservation;
 
     @Temporal(TemporalType.DATE)
     private Date AnneeUniversitaire;
@@ -20,41 +19,8 @@ public class Reservation implements Serializable{
     @ManyToMany(mappedBy = "Reservations")
     List<Etudiant> Etudiants;
 
-    public Reservation() {
-    }
 
-    public Reservation(Long idReservation, Date anneeUniversitaire, boolean isValid) {
-        this.idReservation = idReservation;
-        AnneeUniversitaire = anneeUniversitaire;
-        this.isValid = isValid;
-    }
 
-    public Reservation(Date anneeUniversitaire, boolean isValid) {
-        AnneeUniversitaire = anneeUniversitaire;
-        this.isValid = isValid;
-    }
 
-    public Long getIdReservation() {
-        return idReservation;
-    }
 
-    public void setIdReservation(long idReservation) {
-        this.idReservation = idReservation;
-    }
-
-    public Date getAnneeUniversitaire() {
-        return AnneeUniversitaire;
-    }
-
-    public void setAnneeUniversitaire(Date anneeUniversitaire) {
-        AnneeUniversitaire = anneeUniversitaire;
-    }
-
-    public boolean isValid() {
-        return isValid;
-    }
-
-    public void setValid(boolean valid) {
-        isValid = valid;
-    }
 }
