@@ -52,4 +52,12 @@ public class Universite implements Serializable{
     public void setAddresse(String addresse) {
         this.addresse = addresse;
     }
+
+    public Foyer getFoyer() {
+        return foyer;
+    }
+
+    public void setFoyer(Foyer foyer) {
+        this.foyer = foyer;
+    }
 }

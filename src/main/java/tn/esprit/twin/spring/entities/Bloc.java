@@ -57,4 +57,20 @@ Foyer foyer;
     public void setCapaciteBloc(long capaciteBloc) {
         this.capaciteBloc = capaciteBloc;
     }
+
+    public List<Chambre> getChambres() {
+        return chambres;
+    }
+
+    public void setChambres(List<Chambre> chambres) {
+        this.chambres = chambres;
+    }
+
+    public Foyer getFoyer() {
+        return foyer;
+    }
+
+    public void setFoyer(Foyer foyer) {
+        this.foyer = foyer;
+    }
 }

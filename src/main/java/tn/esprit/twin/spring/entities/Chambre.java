@@ -48,4 +48,20 @@ public class Chambre implements Serializable{
     public void setTypeC(TypeChambre typeC) {
         TypeC = typeC;
     }
+
+    public List<Reservation> getReservations() {
+        return Reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        Reservations = reservations;
+    }
+
+    public Bloc getBloc() {
+        return bloc;
+    }
+
+    public void setBloc(Bloc bloc) {
+        this.bloc = bloc;
+    }
 }
