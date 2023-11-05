@@ -1,8 +1,17 @@
 package tn.esprit.twin.spring.entities;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table( name = "Universite")
 public class Universite implements Serializable{
     @Id
@@ -15,49 +24,5 @@ public class Universite implements Serializable{
     @OneToOne
     Foyer foyer;
 
-    public Universite() {
-    }
 
-    public Universite(Long idUniversite, String nomUniversite, String addresse) {
-        this.idUniversite = idUniversite;
-        this.nomUniversite = nomUniversite;
-        this.addresse = addresse;
-    }
-
-    public Universite(String nomUniversite, String addresse) {
-        this.nomUniversite = nomUniversite;
-        this.addresse = addresse;
-    }
-
-    public Long getIdUniversite() {
-        return idUniversite;
-    }
-
-    public void setIdUniversite(Long idUniversite) {
-        this.idUniversite = idUniversite;
-    }
-
-    public String getNomUniversite() {
-        return nomUniversite;
-    }
-
-    public void setNomUniversite(String nomUniversité) {
-        this.nomUniversite = nomUniversité;
-    }
-
-    public String getAddresse() {
-        return addresse;
-    }
-
-    public void setAddresse(String addresse) {
-        this.addresse = addresse;
-    }
-
-    public Foyer getFoyer() {
-        return foyer;
-    }
-
-    public void setFoyer(Foyer foyer) {
-        this.foyer = foyer;
-    }
 }

@@ -1,9 +1,18 @@
 package tn.esprit.twin.spring.entities;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "Bloc")
 public class Bloc  implements Serializable{
 
@@ -20,57 +29,4 @@ public class Bloc  implements Serializable{
 Foyer foyer;
 
 
-    public Bloc() {
-    }
-
-    public Bloc(long idBloc, String nomBloc, long capaciteBloc) {
-        this.idBloc = idBloc;
-        this.nomBloc = nomBloc;
-        this.capaciteBloc = capaciteBloc;
-    }
-
-    public Bloc(String nomBloc, long capaciteBloc) {
-        this.nomBloc = nomBloc;
-        this.capaciteBloc = capaciteBloc;
-    }
-
-    public long getIdBloc() {
-        return idBloc;
-    }
-
-    public void setIdBloc(long idBloc) {
-        this.idBloc = idBloc;
-    }
-
-    public String getNomBloc() {
-        return nomBloc;
-    }
-
-    public void setNomBloc(String nomBloc) {
-        this.nomBloc = nomBloc;
-    }
-
-    public long getCapaciteBloc() {
-        return capaciteBloc;
-    }
-
-    public void setCapaciteBloc(long capaciteBloc) {
-        this.capaciteBloc = capaciteBloc;
-    }
-
-    public List<Chambre> getChambres() {
-        return chambres;
-    }
-
-    public void setChambres(List<Chambre> chambres) {
-        this.chambres = chambres;
-    }
-
-    public Foyer getFoyer() {
-        return foyer;
-    }
-
-    public void setFoyer(Foyer foyer) {
-        this.foyer = foyer;
-    }
 }

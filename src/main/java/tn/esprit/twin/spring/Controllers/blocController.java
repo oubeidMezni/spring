@@ -43,10 +43,10 @@ public class blocController {
     }
 
 
-    @PostMapping("/affecterChambresABloc")
-    public Bloc affecterChambresABloc(@RequestBody List<Long> numChambre, @RequestParam String nomBloc){
-        return bs.affecterChambresABloc(numChambre,nomBloc);
-    }
+//    @PostMapping("/affecterChambresABloc")
+//    public Bloc affecterChambresABloc(@RequestBody List<Long> numChambre, @RequestParam String nomBloc){
+//        return bs.affecterChambresABloc(numChambre,nomBloc);
+//    }
 
 
 }

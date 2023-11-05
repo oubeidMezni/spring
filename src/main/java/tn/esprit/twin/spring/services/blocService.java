@@ -41,14 +41,14 @@ public class blocService implements IblocService{
         br.deleteById(idBloc);
     }
 
-    @Override
-    public Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) {
-        Bloc bloc = br.findBlocByNomBloc(nomBloc);
-        for (Long numCham : numChambre) {
-            Chambre chambre = cr.findByNumChambre(numChambre);
-            chambre.setBloc(bloc);
-            cr.save(chambre);
-        }
-        return bloc;
-    }
+//    @Override
+//    public Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) {
+//        Bloc bloc = br.findBlocByNomBloc(nomBloc);
+//        for (Long numCham : numChambre) {
+//            Chambre chambre = cr.findByNumChambre(numChambre);
+//            chambre.setBloc(bloc);
+//            cr.save(chambre);
+//        }
+//        return bloc;
+//    }
 }
