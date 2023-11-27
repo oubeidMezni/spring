@@ -1,4 +1,6 @@
-package tn.esprit.twin.spring.entities;
+package tn.esprit.com.foyer.entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,27 +8,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+
 @AllArgsConstructor
-@Table(name = "Bloc")
-public class Bloc  implements Serializable{
-
+@NoArgsConstructor
+@Table( name = "Bloc")
+public class Bloc implements Serializable {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="idBloc")
-    private long idBloc;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idBloc")
+    private Long idBloc; // Clé primaire
     private String nomBloc;
-    private long capaciteBloc;
-
-@OneToMany (mappedBy = "bloc")
-    List<Chambre> chambres;
-@ManyToOne
-Foyer foyer;
+    private Long capaciteBloc;
+    @ManyToOne
+    Foyer foyer;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="bloc", fetch = FetchType.EAGER)
+    private Set<Chambre> chambres;
 
 
 }

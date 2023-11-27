@@ -1,17 +1,14 @@
-package tn.esprit.twin.spring.services;
+package tn.esprit.com.foyer.services;
 
-
-import org.springframework.stereotype.Service;
-import tn.esprit.twin.spring.entities.Foyer;
+import tn.esprit.com.foyer.entities.Foyer;
 
 import java.util.List;
 
-@Service
 public interface IFoyerService {
-
-    List<Foyer> retrieveAllFoyer();
-    Foyer AddFoyer(Foyer e);
-    Foyer EditFoyer(Foyer e);
-    Foyer RetrieveFoyer(Long idFoyer );
-    void removeFoyer(Long idFoyer);
+    List<Foyer> retrieveAllFoyers();
+    Foyer addFoyer (Foyer f);
+    Foyer updateFoyer (Foyer f);
+    Foyer retrieveFoyer (long idFoyer);
+    void archiverFoyer (long idFoyer);
+    void deleteFoyer(long idFoyer);
 }

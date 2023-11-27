@@ -1,4 +1,6 @@
-package tn.esprit.twin.spring.entities;
+package tn.esprit.com.foyer.entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,19 +9,19 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table( name = "Etudiant")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class Etudiant implements Serializable {
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Table( name = "Etudiant")
+public class Etudiant implements Serializable {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="idEtudiant")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idEtudiant")
     private Long idEtudiant; // Clé primaire
     private String nomEt;
     private String prenomEt;
@@ -27,10 +29,9 @@ public class Etudiant implements Serializable {
     private String ecole;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
-
-    @ManyToMany
-    List<Reservation> Reservations;
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Reservation> reservations;
 
 
 }

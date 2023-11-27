@@ -1,4 +1,5 @@
-package tn.esprit.twin.spring.entities;
+package tn.esprit.com.foyer.entities;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,29 +8,23 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+
 @AllArgsConstructor
-@Table(name = "Reservation")
-public class Reservation implements Serializable{
+@NoArgsConstructor
+@Table( name = "Reservation")
+public class Reservation implements Serializable {
     @Id
-    @Column(name="idReservation")
-    private String idReservation;
-
-    @Temporal(TemporalType.DATE)
-    private Date AnneeUniversitaire;
-
-    private boolean isValid;
-
-    @ManyToMany(mappedBy = "Reservations")
-    List<Etudiant> Etudiants;
-
-
-
+    @Column(name = "idReservation", length = 50)
+    private String idReservation; // Clé primaire
+    private Date anneeReservation;
+    private boolean estValide;
+    @ManyToMany(mappedBy="reservations", cascade = CascadeType.ALL)
+    private Set<Etudiant> etudiants;
 
 
 }

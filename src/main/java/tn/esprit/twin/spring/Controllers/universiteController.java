@@ -1,52 +1,47 @@
-package tn.esprit.twin.spring.Controllers;
+package tn.esprit.com.foyer.controller;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.twin.spring.entities.Universite;
-import tn.esprit.twin.spring.services.universiteService;
+import tn.esprit.com.foyer.entities.Reservation;
+import tn.esprit.com.foyer.entities.Universite;
+import tn.esprit.com.foyer.services.UniversiteServices;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/u")
-public class universiteController {
+@AllArgsConstructor
+@RequestMapping("/universite")
+public class UniversiteController {
+    UniversiteServices universiteServices;
 
-    @Autowired
-    private universiteService us;
-
-    @GetMapping("/getAllUni")
-    public List<Universite> retrieveAllUniversite() {
-        return us.retrieveAllUniversite() ;
+    @GetMapping("/retrieve-all-universite")
+    public List<Universite> retrieveAllUniversite(){
+        return universiteServices.retrieveAllUniversities();
     }
 
-    @PostMapping("/add")
-    public Universite addUniversite(@RequestBody Universite e) {
-        return us.AddUniversite(e);
+    @GetMapping("/retrieve-universite/{universite-id}")
+    public Universite retrieveUniversite(@PathVariable("universite-id") Long universiteId){
+        return universiteServices.retrieveUniversity(universiteId);
     }
 
-    @PutMapping("edit")
-    public Universite updateUniversite(@RequestBody Universite e) {
-        return us.EditUniversite(e);
+    @PostMapping("/add-universite")
+    public Universite addUniversite(@RequestBody Universite u){
+        return universiteServices.addUniversity(u);
     }
 
-    @GetMapping("/{idUniversite}")
-    public Universite retrieveUniversite(@PathVariable long idUniversite) {
-        return us.RetrieveUniversite(idUniversite);
+    @DeleteMapping("/delete-universite/{universite-id}")
+    public void deleteUniversite(@PathVariable("universite-id") Long universiteId){
+        universiteServices.removeUniversity(universiteId);
     }
+    @PutMapping("/affecterFoyer/{universite-nom}/{foyer-id}")
+    public Universite affecterFoyer(@PathVariable("universite-nom") String nomUniversite, @PathVariable("foyer-id") Long idFoyer){
 
-    @DeleteMapping("/{idUniversite}")
-    public void removeUniversite(@PathVariable long idUniversite) {
-        us.removeUniversite(idUniversite);
+       Universite u =  universiteServices.affecterFoyerUniversite(idFoyer,nomUniversite);
+        return u;
     }
-
-    @PostMapping("/affecterFoyer")
-    public Universite affecterFoyerAUniversite(long idFoyer, String nomUniversite){
-        return us.affecterFoyerAUniversite(idFoyer,nomUniversite);
-    }
-
-    @PostMapping("/desaffecterFoyer")
-    public Universite desaffecterFoyerAUniversite (long idUniversite){
-        return us.affecterFoyerAUniversite(idUniversite,"esprit");
+    @PutMapping("/desaffecterFoyer/{universite-nom}")
+    public Universite desaffecterFoyer(@PathVariable("universite-nom") String nomUniversite){
+        Universite u =  universiteServices.desaffeecterFoyerUniversite(nomUniversite);
+        return u;
     }
 }

@@ -1,42 +1,39 @@
-package tn.esprit.twin.spring.Controllers;
+package tn.esprit.com.foyer.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.twin.spring.entities.Etudiant;
-import tn.esprit.twin.spring.entities.Foyer;
-import tn.esprit.twin.spring.repository.FoyerRepository;
-import tn.esprit.twin.spring.services.IFoyerService;
-import tn.esprit.twin.spring.services.foyerService;
+import tn.esprit.com.foyer.entities.Foyer;
+import tn.esprit.com.foyer.services.FoyerServices;
 
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/f")
-public class foyerController {
+@AllArgsConstructor
+@RequestMapping("/foyer")
+public class FoyerController {
+    FoyerServices foyerServices;
 
-    @Autowired
-    private foyerService fs;
-
-    @GetMapping("/getAllFoyers")
-    public List<Foyer> retrieveAllFoyer() {
-        return fs.retrieveAllFoyer() ;
-    }
-    @PostMapping("/add")
-    public Foyer AddFoyer(@RequestBody Foyer f){
-      return fs.AddFoyer(f);
+    @GetMapping("/retrieve-all-foyer")
+    public List<Foyer> retrieveAllFoyer(){
+        return foyerServices.retrieveAllFoyers();
     }
 
-    @PutMapping("/edit")
-    public Foyer EditFoyer(@RequestBody Foyer f){
-        return fs.EditFoyer(f);
+    @GetMapping("/retrieve-foyer/{foyer-id}")
+    public Foyer retrieveFoyer(@PathVariable("foyer-id") Long foyerId){
+        return foyerServices.retrieveFoyer(foyerId);
     }
-    @GetMapping("/{idFoyer}")
-    public Foyer retrieveFoyer(@PathVariable long idFoyer){
-        return fs.RetrieveFoyer(idFoyer);
+
+    @PostMapping("/add-foyer")
+    public Foyer addFoyer(@RequestBody Foyer f){
+        return foyerServices.addFoyer(f);
     }
-    @DeleteMapping("/{idFoyer}")
-    public void removeFoyer(@PathVariable long idFoyer){
-        fs.removeFoyer(idFoyer);
+    @DeleteMapping("/delete-foyer/{foyer-id}")
+    public void deleteFoyer(@PathVariable("foyer-id") Long foyerId){
+        foyerServices.deleteFoyer(foyerId);
+    }
+
+    @PostMapping("/archiver-foyer/{foyer-id}")
+    public void archiverFoyer(@PathVariable("foyer-id") Long foyerId){
+        foyerServices.archiverFoyer(foyerId);
     }
 }

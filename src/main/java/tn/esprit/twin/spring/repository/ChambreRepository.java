@@ -9,5 +9,6 @@ public interface ChambreRepository extends JpaRepository<Chambre, Long> {
 
 
 
-//   Chambre findByNumChambre(List<Long> numChambre);
+    Chambre findByNumeroChambre(Long numeroChambre);
+
 }

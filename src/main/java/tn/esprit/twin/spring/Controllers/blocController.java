@@ -1,52 +1,33 @@
-package tn.esprit.twin.spring.Controllers;
+package tn.esprit.com.foyer.controller;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.twin.spring.entities.Bloc;
-import tn.esprit.twin.spring.entities.Universite;
-import tn.esprit.twin.spring.repository.BlocRepository;
-import tn.esprit.twin.spring.services.blocService;
+import tn.esprit.com.foyer.entities.Bloc;
+import tn.esprit.com.foyer.services.BlocServices;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/b")
-public class blocController {
-
-    @Autowired
-    blocService bs;
-
-    @GetMapping("/getAllBlocs")
-    public List<Bloc> retrieveAllBlocs() {
-        return bs.retrieveAllBlocs() ;
+@AllArgsConstructor
+@RequestMapping("/bloc")
+public class BlocController {
+    BlocServices blocServices;
+    @GetMapping("/retrieve-all-bloc")
+    public List<Bloc> retrieveAllBloc(){
+        return blocServices.retrieveAllBlocs();
+    }
+    @GetMapping("/retrieve-bloc/{bloc-id}")
+    public Bloc retrieveBloc(@PathVariable("bloc-id") Long blocId){
+        return blocServices.retrieveBloc(blocId);
     }
 
-    @PostMapping("/add")
-    public Bloc AddBloc(@RequestBody Bloc e) {
-        return bs.AddBloc(e);
+    @PostMapping("/add-bloc")
+    public Bloc addBloc(@RequestBody Bloc bloc){
+        return blocServices.addBloc(bloc);
     }
 
-    @PutMapping("edit")
-    public Bloc EditBloc(@RequestBody Bloc e) {
-        return bs.EditBloc(e);
+    @DeleteMapping("/delete-bloc/{bloc-id}")
+    public void deleteBloc(@PathVariable("bloc-id") Long blocId){
+        blocServices.removeBloc(blocId);
     }
-
-    @GetMapping("/{idBloc}")
-    public Bloc RetrieveBloc(@PathVariable long idBloc) {
-        return bs.RetrieveBloc(idBloc);
-    }
-
-    @DeleteMapping("/{idBloc}")
-    public void removeBloc(@PathVariable long idUniversite) {
-        bs.removeBloc(idUniversite);
-    }
-
-
-//    @PostMapping("/affecterChambresABloc")
-//    public Bloc affecterChambresABloc(@RequestBody List<Long> numChambre, @RequestParam String nomBloc){
-//        return bs.affecterChambresABloc(numChambre,nomBloc);
-//    }
-
-
 }

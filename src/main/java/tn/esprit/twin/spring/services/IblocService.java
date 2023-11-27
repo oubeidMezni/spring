@@ -1,18 +1,18 @@
-package tn.esprit.twin.spring.services;
+package tn.esprit.com.foyer.services;
 
-
-import org.springframework.stereotype.Service;
-import tn.esprit.twin.spring.entities.Bloc;
+import tn.esprit.com.foyer.entities.Bloc;
+import tn.esprit.com.foyer.entities.Etudiant;
 
 import java.util.List;
 
-@Service
-public interface IblocService {
-
+public interface IBlocService {
     List<Bloc> retrieveAllBlocs();
-    Bloc AddBloc(Bloc b);
-    Bloc EditBloc(Bloc b);
-    Bloc RetrieveBloc(Long idBloc);
+
+    Bloc addBloc(Bloc b);
+
+    Bloc updateBloc(Bloc b);
+
+    Bloc retrieveBloc(Long idBloc);
+
     void removeBloc(Long idBloc);
-//    public Bloc affecterChambresABloc (List<Long> numChambre, String nomBloc) ;
 }

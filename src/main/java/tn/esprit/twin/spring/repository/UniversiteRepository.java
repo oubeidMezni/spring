@@ -6,4 +6,5 @@ import tn.esprit.twin.spring.entities.Universite;
 public interface UniversiteRepository extends JpaRepository <Universite, Long> {
 
     Universite findByNomUniversite(String nomUniversite);
+
 }

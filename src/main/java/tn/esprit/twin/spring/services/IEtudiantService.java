@@ -1,16 +1,18 @@
-package tn.esprit.twin.spring.services;
+package tn.esprit.com.foyer.services;
 
-import org.springframework.stereotype.Service;
-import tn.esprit.twin.spring.entities.Etudiant;
+import tn.esprit.com.foyer.entities.Etudiant;
 
 import java.util.List;
 
-@Service
 public interface IEtudiantService {
+    List<Etudiant> retrieveAllEtudiants();
 
-    List<Etudiant> retrieveAllEtudiant();
-    Etudiant AddEtudiant(Etudiant e);
-    Etudiant EditEtudiant(Etudiant e);
-    Etudiant RetrieveEtudiant(Long IdEtudiant);
+    Etudiant addEtudiant(Etudiant e);
+
+    Etudiant updateEtudiant(Etudiant e);
+
+    Etudiant retrieveEtudiant(Long idEtudiant);
+
     void removeEtudiant(Long idEtudiant);
+    List<Etudiant> addEtudiants (List<Etudiant> etudiants);
 }

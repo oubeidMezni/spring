@@ -5,4 +5,7 @@ import tn.esprit.twin.spring.entities.Etudiant;
 
 public interface EtudiantRepository  extends JpaRepository<Etudiant,Long> {
 
+    Etudiant findByNomEtAndPrenomEt(String nomEt, String prenomEt);
+
+
 }
